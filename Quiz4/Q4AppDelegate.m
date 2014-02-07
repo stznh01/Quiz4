@@ -7,6 +7,8 @@
 //
 
 #import "Q4AppDelegate.h"
+#import "Q4LeftController.h"
+#import "Q4RightController.h"
 
 @implementation Q4AppDelegate
 
@@ -14,6 +16,15 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    
+    Q4LeftController *lc = [[Q4LeftController alloc] initWithNibName:nil bundle:nil];
+    Q4RightController *rc = [[Q4RightController alloc] initWithNibName:nil bundle:nil];
+    UITabBarController *TabBarController = [[UITabBarController alloc] init];
+    NSArray *controllers = [NSArray arrayWithObjects:lc,rc, nil];
+    [TabBarController setViewControllers:controllers];
+    
+    [[self window] setRootViewController:TabBarController];
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
